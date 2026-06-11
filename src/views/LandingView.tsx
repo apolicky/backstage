@@ -19,7 +19,15 @@ export function LandingView({ onStart }: Props) {
                     open a presentation
                 </button>
                 <p className="mt-8 text-xs text-gray-600 tracking-wide">
-                    Works in Chrome, Firefox, Edge · Desktop only
+                    Works in Chrome, Firefox, Edge · Desktop only · by{" "}
+                    <a
+                        href="https://apolicky.xyz"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-gray-400"
+                    >
+                        apolicky.xyz
+                    </a>
                 </p>
             </div>
         </div>

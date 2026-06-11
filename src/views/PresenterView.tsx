@@ -72,8 +72,8 @@ export function PresenterView({ doc, pdfData, fileName }: Props) {
                 onCycleSplit={() => setSplitIdx((i) => (i + 1) % SPLITS.length)}
                 onOpenAudience={() => window.open("/?view=audience", "audience-window", "popup,width=1280,height=720")}
             />
-            <SlidePreview doc={doc} page={page} pageCount={pageCount} splitPct={SPLITS[splitIdx].value} />
-            <PresenterFooter page={page} pageCount={pageCount} onPrev={prev} onNext={next} />
+            <SlidePreview doc={doc} page={page} hasNext={page < pageCount - 1} splitPct={SPLITS[splitIdx].value} />
+            <PresenterFooter canPrev={page > 0} canNext={page < pageCount - 1} onPrev={prev} onNext={next} />
         </div>
     );
 }

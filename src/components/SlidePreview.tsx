@@ -4,13 +4,11 @@ import { SlideCanvas } from "./SlideCanvas";
 interface Props {
     doc: PDFDocumentProxy;
     page: number;
-    pageCount: number;
+    hasNext: boolean;
     splitPct: number;
 }
 
-export function SlidePreview({ doc, page, pageCount, splitPct }: Props) {
-    const hasNext = page + 1 < pageCount;
-
+export function SlidePreview({ doc, page, hasNext, splitPct }: Props) {
     return (
         <div className="flex flex-1 overflow-hidden p-2 gap-2 min-h-0">
             <div className="flex flex-col gap-2 min-h-0 shrink-0" style={{ width: `${splitPct}%` }}>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import type { ChannelMessage } from "../lib/types";
 
 const CHANNEL = "slide-sync";
@@ -18,6 +18,6 @@ export function useChannel(onMessage: (msg: ChannelMessage) => void) {
         };
     }, []);
 
-    const send = (msg: ChannelMessage) => channelRef.current?.postMessage(msg);
+    const send = useCallback((msg: ChannelMessage) => channelRef.current?.postMessage(msg), []);
     return { send };
 }

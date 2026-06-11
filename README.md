@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+# backstage_
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**The view your audience never sees.**
 
-Currently, two official plugins are available:
+A browser-based presenter for Beamer PDFs. Drop your PDF and open an audience window — the two stay in sync automatically via BroadcastChannel. No server, no account, nothing to install.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## How to use
 
-## React Compiler
+1. Open the app and click **Open a presentation**
+2. Drop your Beamer PDF (compiled with `\setbeameroption{show notes on second screen=right}`)
+3. Click **Start Presenting** — you'll see the current slide, next slide preview, and your speaker notes
+4. Click **Open audience view** to open the second window — it shows only the current slide, full screen
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The two windows stay in sync automatically. Works entirely in the browser; your PDF never leaves your device.
 
-## Expanding the ESLint configuration
+## Browser requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Chrome, Firefox, or Edge on desktop. Safari 15.4+ works too. Mobile browsers are not supported (BroadcastChannel between windows requires a desktop environment).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
+npm run dev    # dev server at http://localhost:5173
+npm run build  # production build → dist/
+npm run lint
+npm run format
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deployment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The build output in `dist/` is a fully static site — deploy it anywhere: GitHub Pages, Netlify, Vercel, or any static host.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+For GitHub Pages with a repository sub-path, set `base` in `vite.config.ts`:
+
+```ts
+export default defineConfig({
+  base: '/your-repo-name/',
+  // ...
+})
 ```

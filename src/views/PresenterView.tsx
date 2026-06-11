@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { PresenterHeader } from "../components/PresenterHeader";
 import { SlidePreview } from "../components/SlidePreview";

@@ -67,7 +67,7 @@ export function HomeView({ onPdfLoaded }: Props) {
                     <path d="M15 2 v4 h4" />
                 </svg>
                 <div className="text-center text-gray-400">
-                    <p className="text-xl font-bold tracking-widest">
+                    <p className="text-xl font-bold tracking-wide">
                         {rejected ? "not a PDF" : dragging ? "release to open" : "drop a PDF here"}
                     </p>
                     <p className="mt-2 text-sm tracking-wide">or click to browse</p>

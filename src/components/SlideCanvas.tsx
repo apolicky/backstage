@@ -44,7 +44,7 @@ export function SlideCanvas({ doc, pageIndex, side, className }: Props) {
         const offCtx = offscreen.getContext("2d")!;
 
         const viewport = page.getViewport({ scale: renderScale });
-        const task = page.render({ canvasContext: offCtx, viewport });
+        const task = page.render({ canvas: offscreen, canvasContext: offCtx, viewport });
         renderTaskRef.current = task;
         try {
             await task.promise;
